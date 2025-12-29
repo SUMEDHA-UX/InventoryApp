@@ -1,0 +1,93 @@
+:root {
+    --primary: #6366f1;
+    --secondary: #a855f7;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --bg: #f8fafc;
+    --text: #1e293b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.container { padding: 2rem 5%; }
+
+.hidden { display: none; }
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Table Styling */
+.table-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f1f5f9;
+    padding: 1.2rem;
+    text-align: left;
+}
+
+td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Button Styles */
+.btn {
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn:active { transform: scale(0.95); }
+
+.btn-add { background: white; color: var(--primary); }
+.btn-save { background: var(--success); color: white; width: 100%; }
+.btn-edit { color: var(--primary); background: #e0e7ff; margin-right: 5px; }
+.btn-delete { color: var(--danger); background: #fee2e2; }
+.btn-cancel { background: #94a3b8; color: white; width: 100%; margin-top: 10px; }
+
+/* Form Styling */
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }

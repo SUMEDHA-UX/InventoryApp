@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add / Edit Inventory Item</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2 id="form-title">Add New Inventory Item</h2>
+        <hr>
+        <form id="itemForm">
+            <div class="form-group">
+                <label>Item ID</label>
+                <input type="number" id="id" placeholder="Enter unique ID" required>
+            </div>
+            <div class="form-group">
+                <label>Item Name</label>
+                <input type="text" id="itemName" required>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" id="category" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" id="quantity" required>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" step="0.01" id="price" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Supplier</label>
+                <input type="text" id="supplier">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-save">Save Item</button>
+                <a href="index.html" class="btn btn-cancel">Back to Home</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const editId = urlParams.get('edit');
+        if (editId) {
+            document.getElementById('form-title').innerText = "Update Item #" + editId;
+            prefillForm(editId);
+        }
+    };
+
+    document.getElementById('itemForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const urlParams = new URLSearchParams(window.location.search);
+        const editId = urlParams.get('edit');
+
+        const itemData = {
+            id: parseInt(document.getElementById('id').value),
+            itemName: document.getElementById('itemName').value,
+            category: document.getElementById('category').value,
+            quantity: parseInt(document.getElementById('quantity').value),
+            price: parseFloat(document.getElementById('price').value),
+            supplier: document.getElementById('supplier').value
+        };
+
+        const success = await saveItem(itemData, editId);
+        if (success) window.location.href = "index.html";
+    });
+</script>
+</body>
+</html>
